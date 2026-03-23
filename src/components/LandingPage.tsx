@@ -105,7 +105,7 @@ export default function LandingPage() {
               fontFamily: "'Courier New', Courier, monospace"
             }}
           >
-            <Play size={14} /> Sequence
+            <Play size={14} /> Pitch Video
           </motion.button>
           
           <motion.button
@@ -122,7 +122,7 @@ export default function LandingPage() {
               fontFamily: "'Courier New', Courier, monospace"
             }}
           >
-            <FileText size={14} /> Telemetry
+            <FileText size={14} /> Spec Sheet
           </motion.button>
         </motion.div>
         
