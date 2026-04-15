@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { X, Download } from 'lucide-react';
-import { ASSETS, PAGE_CONTENT } from '../config';
+import { X } from 'lucide-react';
 
 interface SpecModalProps {
   onClose: () => void;
@@ -16,7 +15,7 @@ export default function SpecModal({ onClose }: SpecModalProps) {
       style={{
         position: 'fixed',
         top: 0, left: 0, width: '100%', height: '100%',
-        backgroundColor: 'var(--overlay-bg)',
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
         backdropFilter: 'blur(10px)',
         zIndex: 50,
         display: 'flex',
@@ -32,51 +31,57 @@ export default function SpecModal({ onClose }: SpecModalProps) {
         transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
         style={{
-          width: '90%', maxWidth: '900px', height: '85vh',
-          backgroundColor: '#0a0a14',
-          border: '1px solid var(--glass-border)',
+          width: '95%', maxWidth: '1200px', height: '90vh',
+          backgroundColor: '#0a0f1c',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '8px',
           overflow: 'hidden',
-          boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+          boxShadow: '0 25px 50px -12px rgba(0,0,0,0.7)',
           display: 'flex', flexDirection: 'column'
         }}
       >
+        {/* Header */}
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          padding: '16px 24px', borderBottom: '1px solid #222'
+          padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)',
+          backgroundColor: '#0a0f1c',
+          flexShrink: 0
         }}>
-          <h3 style={{ fontSize: '1rem', color: 'var(--text-secondary)' }}>
-            {PAGE_CONTENT.specSheetTitle}
+          <h3 style={{
+            fontSize: '0.8rem', color: '#00f0ff',
+            letterSpacing: '3px', textTransform: 'uppercase',
+            fontFamily: "'Courier New', Courier, monospace",
+            margin: 0
+          }}>
+            FT-NAS // Spec Sheet
           </h3>
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <a 
-              href={ASSETS.specSheetUrl} 
-              download
-              style={{
-                display: 'flex', alignItems: 'center', gap: '8px',
-                color: 'var(--accent-cyan)', fontSize: '0.9rem'
-              }}
-            >
-              <Download size={18} />
-              Download PDF
-            </a>
-            <button onClick={onClose} style={{ color: 'var(--text-secondary)', display: 'flex' }}>
-              <X size={24} />
-            </button>
-          </div>
-        </div>
-        
-        <div style={{ flex: 1, width: '100%', backgroundColor: '#111' }}>
-          <object 
-            data={ASSETS.specSheetUrl}
-            type="application/pdf"
-            width="100%"
-            height="100%"
+          <button
+            onClick={onClose}
+            style={{
+              color: '#556677', display: 'flex', alignItems: 'center',
+              background: 'none', border: 'none', cursor: 'pointer',
+              padding: '4px',
+              transition: 'color 0.2s ease'
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#556677')}
           >
-            <p style={{ color: '#fff', padding: '20px' }}>
-              Your browser does not support PDFs. <a href={ASSETS.specSheetUrl} style={{ color: 'var(--accent-cyan)' }}>Download the PDF</a>.
-            </p>
-          </object>
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Iframe containing the Ftnasspecsheet app */}
+        <div style={{ flex: 1, width: '100%', overflow: 'hidden' }}>
+          <iframe
+            src="/specsheet/index.html"
+            title="FT-NAS Spec Sheet"
+            style={{
+              width: '100%',
+              height: '100%',
+              border: 'none',
+              backgroundColor: '#0a0f1c'
+            }}
+          />
         </div>
       </motion.div>
     </motion.div>
