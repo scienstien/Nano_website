@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ftnasspecsheet dependencies & build output
+Ftnasspecsheet/node_modules
+Ftnasspecsheet/dist
+Ftnasspecsheet/package-lock.json
