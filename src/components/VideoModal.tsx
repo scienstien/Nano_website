@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
-import { ASSETS, PAGE_CONTENT } from '../config';
+import { PAGE_CONTENT } from '../config';
 
 interface VideoModalProps {
   onClose: () => void;
@@ -54,13 +54,13 @@ export default function VideoModal({ onClose }: VideoModalProps) {
         </div>
         
         <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#050510' }}>
-          <video 
-            src={ASSETS.pitchVideoUrl}
-            controls
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          >
-            Your browser does not support HTML5 video.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/xmkVBbhrE0E?si=hwom2FKlsPCLTZJe"
+            title={PAGE_CONTENT.pitchVideoTitle}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ width: '100%', height: '100%', border: 'none' }}
+          />
         </div>
       </motion.div>
     </motion.div>
