@@ -1,10 +1,8 @@
-import { useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 
 export default function WaveSurface() {
-  const materialRef = useRef<THREE.MeshStandardMaterial>(null);
-  
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
     uColorGlow: { value: new THREE.Color("#00f0ff") },
@@ -16,7 +14,7 @@ export default function WaveSurface() {
     }
   });
 
-  const onBeforeCompile = (shader: any) => {
+  const onBeforeCompile = (shader: THREE.WebGLProgramParametersWithUniforms) => {
     shader.uniforms.uTime = uniforms.uTime;
     shader.uniforms.uColorGlow = uniforms.uColorGlow;
     
@@ -72,7 +70,6 @@ export default function WaveSurface() {
         {/* Strictly reduced to 32x32 to guarantee rendering capability */}
         <planeGeometry args={[25, 25, 32, 32]} />
         <meshStandardMaterial
-          ref={materialRef}
           color="#030308"
           roughness={0.8}
           metalness={0.2}

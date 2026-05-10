@@ -10,7 +10,7 @@ export const PAGE_CONTENT = {
 };
 
 export const ASSETS = {
-  // Can be absolute URLs if needed, currently set to local public/assets
+  // Keep these in sync with files under public/assets before deploying.
   pitchVideoUrl: "/assets/pitch-video.mp4",
   specSheetUrl: "/assets/spec-sheet.pdf",
 };
